@@ -7,10 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        double a, b, c;                     // Task 1 variables
-        double weight;                      // Task 2 variables
-        double r1, r2;                      // Task 3 variables
-        int num;                            // Task 4 variables
+        double a, b, c;                         // Task 1 variables
+        double weight;                          // Task 2 variables
+        double r1, r2;                          // Task 3 variables
+        int num;                                // Task 4 variables
+        int N = 0, N2;                              // Task 5 variables
 
         /* Task 1
          * difference check between a, b and c
@@ -60,6 +61,22 @@ public class Main {
             }
         }
         sequences(num);
+
+        /* Task 5
+         * average and geometrical average
+         */
+
+        ArrayList<Integer> numeralList = new ArrayList<Integer>();
+        while (numeralList.size() != 6) {
+            System.out.println("\nEnter six-digit number");
+            N = scanner.nextInt();
+            N2 = N;
+            while (N2 > 0) {
+                numeralList.add(N2 % 10);
+                N2= N2 / 10;
+            }
+        }
+        average(N);
 
 
     }
@@ -149,6 +166,28 @@ public class Main {
                 System.out.println("It is an decreasing sequence");
             }
         }
+
+    }
+
+    // Task 5 methods
+
+    public static void average(int N) {
+
+        ArrayList<Integer> numeralList = new ArrayList<Integer>();
+        int sum = 0, N2 = N, pro = 1;
+        double average, gAverage;
+        while (N > 0) {
+            numeralList.add(N % 10);
+            N = N / 10;
+        }
+        for (int i = 0; i < numeralList.size(); ++i) {
+            sum = sum + numeralList.get(i);
+            pro = pro * numeralList.get(i);
+        }
+        average = (double)sum / numeralList.size();
+        gAverage = Math.pow(pro, 1 / (double)numeralList.size());
+        System.out.println("Average of " + N2 + " = " + average);
+        System.out.println("Geometrical average of " + N2 + " = " + gAverage);
 
     }
 
