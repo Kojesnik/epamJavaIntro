@@ -8,16 +8,27 @@ public class Main {
          * difference check between a, b and c
          */
 
-        int a, b, c;
+        double a, b, c;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 3 numbers: a, b and c");
-        a = scanner.nextInt();
-        b = scanner.nextInt();
-        c = scanner.nextInt();
+        a = scanner.nextDouble();
+        b = scanner.nextDouble();
+        c = scanner.nextDouble();
         numCheck(a, b, c);
+
+        /* Task 2
+         * kg transfer to milligrams, grams and tons
+         */
+
+        double weight;
+        System.out.println("\nEnter dinosaur weight");
+        weight = scanner.nextDouble();
+        weightTransfer(weight);
+
     }
 
-    public static void numCheck(int a, int b, int c) {
+    public static void numCheck(double a, double b, double c) {
+
         if (a!=b && b!=c && a!=c) {
             System.out.println("All 3 numbers are different");
         } else if (a==b && b==c && a==c) {
@@ -29,6 +40,19 @@ public class Main {
         } else if (a==c && a!=b) {
             System.out.println("a == c, but b != c and b != a");
         }
+
+    }
+
+    public static void weightTransfer(double weight) {
+
+        double mg, g, t;
+        mg = weight * 1_000_000;
+        g = weight * 1_000;
+        t = weight / 1_000;
+        System.out.println(weight + " kg = " + mg + " milligrams");
+        System.out.println(weight + " kg = " + g + " grams");
+        System.out.println(weight + " kg = " + t + " tons");
+
     }
 
 }
