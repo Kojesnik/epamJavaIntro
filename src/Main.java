@@ -13,6 +13,7 @@ public class Main {
         int num;                                // Task 4 variables
         int N;                                  // Task 5 variables
         int N2;                                 // Task 6 variables
+        double num1, num2;                      // Task 7 variables
 
         /* Task 1
          * difference check between a, b and c
@@ -78,6 +79,19 @@ public class Main {
         System.out.println("\nEnter number to reverse it");
         N2 = scanner.nextInt();
         reverse(N2);
+
+        /* Task 7
+         * change variables btw each other
+         */
+
+        System.out.println("\nEnter 2 numbers");
+        num1 = scanner.nextDouble();
+        num2 = scanner.nextDouble();
+        System.out.println(num1 + " - a\n" + num2 + " - b");
+        num1 = num1 + num2;
+        num2 = num1 - num2;
+        num1 = num1 - num2;
+        System.out.println(num1 + " - a\n" + num2 + " - b");
 
 
     }
