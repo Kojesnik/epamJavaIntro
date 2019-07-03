@@ -11,7 +11,8 @@ public class Main {
         double weight;                          // Task 2 variables
         double r1, r2;                          // Task 3 variables
         int num;                                // Task 4 variables
-        int N = 0, N2;                              // Task 5 variables
+        int N;                                  // Task 5 variables
+        int N2;                                 // Task 6 variables
 
         /* Task 1
          * difference check between a, b and c
@@ -66,17 +67,17 @@ public class Main {
          * average and geometrical average
          */
 
-        ArrayList<Integer> numeralList = new ArrayList<Integer>();
-        while (numeralList.size() != 6) {
-            System.out.println("\nEnter six-digit number");
-            N = scanner.nextInt();
-            N2 = N;
-            while (N2 > 0) {
-                numeralList.add(N2 % 10);
-                N2= N2 / 10;
-            }
-        }
+        System.out.println("\nEnter number");
+        N = scanner.nextInt();
         average(N);
+
+        /* Task 6
+         * reverse
+         */
+
+        System.out.println("\nEnter number to reverse it");
+        N2 = scanner.nextInt();
+        reverse(N2);
 
 
     }
@@ -169,7 +170,7 @@ public class Main {
 
     }
 
-    // Task 5 methods
+    // Task 5 method
 
     public static void average(int N) {
 
@@ -189,6 +190,23 @@ public class Main {
         System.out.println("Average of " + N2 + " = " + average);
         System.out.println("Geometrical average of " + N2 + " = " + gAverage);
 
+    }
+
+    // Task 6 method
+
+    public static void reverse(int N2) {
+
+        int reversedNum = 0, degree;
+        ArrayList<Integer> numeralList = new ArrayList<Integer>();
+        while (N2 > 0) {
+            numeralList.add(N2 % 10);
+            N2 = N2 / 10;
+        }
+        for (int i = 0; i < numeralList.size(); ++i) {
+            degree = numeralList.size() - (i + 1);
+            reversedNum = reversedNum + numeralList.get(i) * (int)Math.pow(10, degree);
+        }
+        System.out.println(reversedNum);
     }
 
 }
