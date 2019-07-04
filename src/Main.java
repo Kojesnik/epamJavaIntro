@@ -153,12 +153,46 @@ public class Main {
 
     }
 
-    // Task 4 method
+    // Task 4 method (WITHOUT ARRAYLIST) FOR ALL NUMBERS
 
     public static void sequences(int num) {
 
         int num1, num2;
-        boolean lastIncrease = true, increase = true, cont = true, seq;
+        num1 = num % 10;
+        num = num / 10;
+        num2 = num % 10;
+        if (num1 > num2) {
+            while ((num != 0) && (num1 > num2)) {
+                num1 = num % 10;
+                num = num / 10;
+                num2 = num % 10;
+            }
+            if (num == 0) {
+                System.out.println("It is an increasing sequence");
+            } else {
+                System.out.println("It is not a sequence");
+            }
+        } else {
+            while ((num != 0) && (num2 > num1)) {
+                num1 = num % 10;
+                num = num / 10;
+                num2 = num % 10;
+            }
+            if (num == 0) {
+                System.out.println("It is a decreasing sequence");
+            } else {
+                System.out.println("It is not a sequence");
+            }
+        }
+
+    }
+
+    // Task 4 method (USING ARRAYLIST) FOR ALL NUMBERS
+
+    public static void sequencesArray(int num) {
+
+        int num1, num2;
+        boolean lastIncrease = true, increase = true, cont = true, size;
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
         while (num > 0) {
             numeralList.add(num % 10);
@@ -199,9 +233,28 @@ public class Main {
 
     }
 
-    // Task 5 method
+    // Task 5 method (WITHOUT ARRAYLIST) FOR ALL NUMBERS
 
     public static void average(int N) {
+
+        int sum = 0, pro = 1, size = 0, N2 = N;
+        double average, gAverage;
+        while (N != 0) {
+            sum += N % 10;
+            pro *= N % 10;
+            ++size;
+            N = N / 10;
+        }
+        average = (double)sum / size;
+        gAverage = Math.pow(pro, 1/(double)size);
+        System.out.println("Average of " + N2 + " = " + average);
+        System.out.println("Geometrical average of " + N2 + " = " + gAverage);
+
+    }
+
+    // Task 5 method (USING ARRAYLIST) FOR ALL NUMBERS
+
+    public static void averageArray(int N) {
 
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
         int sum = 0, N2 = N, pro = 1;
@@ -221,9 +274,33 @@ public class Main {
 
     }
 
-    // Task 6 method
+    // Task 6 method (WITHOUT ARRAYLIST WITHOUT STRINGBUFFER) FOR ALL NUMBERS
 
     public static void reverse(int N2) {
+
+        String reverse = "";
+        while (N2 != 0) {
+            reverse += N2 % 10;
+            N2 = N2 / 10;
+        }
+        System.out.println(reverse);
+
+    }
+
+    // Task 6 method (WITHOUT ARRAYLIST USING STRINGBUFFER) FOR ALL NUMBERS
+
+    public static void reverseSB(int N2) {
+
+        String string = Integer.toString(N2);
+        string = new StringBuffer(string).reverse().toString();
+        N2 = Integer.parseInt(string);
+        System.out.println(N2);
+
+    }
+
+    // Task 6 method (USING ARRAYLIST) FOR ALL NUMBERS
+
+    public static void reverseArray(int N2) {
 
         int reversedNum = 0, degree;
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
