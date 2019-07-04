@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final double PI = 3.14;
+    public static final double PI = 3.14;       // Const
 
     public static void main(String[] args) {
 
@@ -14,6 +14,7 @@ public class Main {
         int N;                                  // Task 5 variables
         int N2;                                 // Task 6 variables
         double num1, num2;                      // Task 7 variables
+        int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
 
         /* Task 1
          * difference check between a, b and c
@@ -91,8 +92,22 @@ public class Main {
         num1 = num1 + num2;
         num2 = num1 - num2;
         num1 = num1 - num2;
-        System.out.println(num1 + "\n = a\n" + num2 + " = b");
+        System.out.println(num1 + " = a\n" + num2 + " = b");
 
+        /* Task 8
+         * triangle check
+         */
+
+        System.out.println("\nEnter 3 dots, first: x1,y1");
+        x1 = scanner.nextInt();
+        y1 = scanner.nextInt();
+        System.out.println("Second: x2,y2");
+        x2 = scanner.nextInt();
+        y2 = scanner.nextInt();
+        System.out.println("Third: x3,y3");
+        x3 = scanner.nextInt();
+        y3 = scanner.nextInt();
+        triangleCheck(x1, y1, x2, y2, x3, y3);
 
     }
 
@@ -221,6 +236,41 @@ public class Main {
             reversedNum = reversedNum + numeralList.get(i) * (int)Math.pow(10, degree);
         }
         System.out.println(reversedNum);
+    }
+
+    // Task 8 method
+
+    public static void triangleCheck(int x1, int y1, int x2, int y2, int x3, int y3) {
+
+        double AB, AC, BC;
+        AB = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        BC = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+        AC = Math.sqrt(Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
+        System.out.println(AC);
+        if ( (AB < (BC + AC)) && (BC < (AB + AC)) && (AC < (AB + BC)) ) {
+            System.out.println("It is a triangle");
+            if ((AB > BC) && (AB > AC)) {
+                if ((int)Math.pow(AB, 2) == (Math.pow(BC, 2) + Math.pow(AC, 2))) {
+                    System.out.println("And it is rectangular");
+                } else {
+                    System.out.println("And it is not rectangular");
+                }
+            } else if ((BC > AB) && (BC > AC)) {
+                if ((int)Math.pow(BC, 2) == (Math.pow(AB, 2) + Math.pow(AC, 2))) {
+                    System.out.println("And it is rectangular");
+                } else {
+                    System.out.println("And it is not rectangular");
+                }
+            } else if ((AC > BC) && (AC > AB)) {
+                if ((int)Math.pow(AC, 2) == (Math.pow(BC, 2) + Math.pow(AB, 2))) {
+                    System.out.println("And it is rectangular");
+                } else {
+                    System.out.println("And it is not rectangular");
+                }
+            }
+        } else {
+            System.out.println("It is not a triangle");
+        }
     }
 
 }
