@@ -87,11 +87,11 @@ public class Main {
         System.out.println("\nEnter 2 numbers");
         num1 = scanner.nextDouble();
         num2 = scanner.nextDouble();
-        System.out.println(num1 + " - a\n" + num2 + " - b");
+        System.out.println(num1 + " = a\n" + num2 + " = b");
         num1 = num1 + num2;
         num2 = num1 - num2;
         num1 = num1 - num2;
-        System.out.println(num1 + " - a\n" + num2 + " - b");
+        System.out.println(num1 + "\n = a\n" + num2 + " = b");
 
 
     }
