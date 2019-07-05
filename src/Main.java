@@ -151,6 +151,8 @@ public class Main {
         day = scanner.nextInt();
         nextDay(year, month, day);
 
+        scanner.close();
+
     }
 
     // Task 1 method
