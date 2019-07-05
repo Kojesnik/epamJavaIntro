@@ -17,6 +17,7 @@ public class Main {
         int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
         int dragonAge;                          // Task 9 variables
         char letter;                            // Task 10 variables
+        int month, year, day;                  // Task 11 variables
 
         /* Task 1
          * difference check between a, b and c */
@@ -121,9 +122,15 @@ public class Main {
         letterScan4(letter);
 
         /* Task 11
+         * counting next day */
 
-         */
-
+        System.out.println("\nEnter year");
+        year = scanner.nextInt();
+        System.out.println("\nEnter month");
+        month = scanner.nextInt();
+        System.out.println("\nEnter day");
+        day = scanner.nextInt();
+        nextDay(year, month, day);
 
     }
 
@@ -366,7 +373,7 @@ public class Main {
         }
     }
 
-    //Task 9 method
+    // Task 9 method
 
     public static void dragonHeadEyeCount(int dragonAge) {
 
@@ -386,7 +393,7 @@ public class Main {
 
     }
 
-    //Task 10 method (SWITCH METHOD)
+    // Task 10 method (SWITCH METHOD)
 
     public static void letterScan1(char letter) {
 
@@ -428,7 +435,7 @@ public class Main {
 
     }
 
-    //Task 10 method (IF METHOD)
+    // Task 10 method (IF METHOD)
 
     public static void letterScan2(char letter) {
 
@@ -443,7 +450,7 @@ public class Main {
 
     }
 
-    //Task 10 method (VOWEL ARRAY METHOD)
+    // Task 10 method (VOWEL ARRAY METHOD)
 
     public static void letterScan3(char letter) {
 
@@ -458,7 +465,7 @@ public class Main {
 
     }
 
-    //Task 10 method (NOT VOWEL ARRAY METHOD)
+    // Task 10 method (NOT VOWEL ARRAY METHOD)
 
     public static void letterScan4(char letter) {
 
@@ -472,6 +479,80 @@ public class Main {
             }
         }
         System.out.println("It is a vowel letter");
+
+    }
+
+    // Task 11 method
+
+    public static void nextDay(int year, int month, int day) {
+
+        boolean isVisokosniy;
+        if ((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0)) {
+            System.out.println("Visokosnyy year");
+            isVisokosniy = true;
+        } else if ((year % 4 == 0) && (year % 100 == 0)) {
+            isVisokosniy = false;
+            System.out.println("Normal year");
+        } else if (year % 4 == 0) {
+            System.out.println("Visokosnyy year");
+            isVisokosniy = true;
+        } else {
+            isVisokosniy = false;
+            System.out.println("Normal year");
+        }
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                if (day == 31) {
+                    if (month == 12) {
+                        month = 1;
+                    } else {
+                        ++month;
+                    }
+                    ++year;
+                    System.out.println("Next day - 1." + month + "." + year);
+                } else {
+                    ++day;
+                    System.out.println("Next day - " + day + "." +month + "." + year);
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (day == 30) {
+                    ++month;
+                    System.out.println("Next day - 1." + month + "." + year);
+                } else {
+                    ++day;
+                    System.out.println("Next day - " + day + "." +month + "." + year);
+                }
+                break;
+            case 2:
+                if (isVisokosniy == true) {
+                    if (day == 29) {
+                        ++month;
+                        System.out.println("Next day - 1." + month + "." + year);
+                    } else {
+                        ++day;
+                        System.out.println("Next day - " + day + "." +month + "." + year);
+                    }
+                } else {
+                    if (day == 28) {
+                        ++month;
+                        System.out.println("Next day - 1." + month + "." + year);
+                    } else {
+                        ++day;
+                        System.out.println("Next day - " + day + "." +month + "." + year);
+                    }
+                }
+
+        }
 
     }
 
