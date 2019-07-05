@@ -14,7 +14,7 @@ public class Main {
         int N;                                  // Task 5 variables
         int nToReverse;                         // Task 6 variables
         double num1, num2;                      // Task 7 variables
-        int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
+        int x1, y1, x2, y2, x3, y3;                  // Task 8 variables
         int dragonAge;                          // Task 9 variables
         char letter;                            // Task 10 variables
         int month, year, day;                   // Task 11 variables
@@ -34,6 +34,12 @@ public class Main {
 
         System.out.println("\nEnter dinosaur weight");
         dinoWeight = scanner.nextDouble();
+        if (dinoWeight <= 0) {
+            while (dinoWeight <= 0) {
+                System.out.println("Dino weight cant be <= 0. Enter again");
+                dinoWeight = scanner.nextDouble();
+            }
+        }
         weightTransfer(dinoWeight);
 
         /* Task 3
@@ -42,9 +48,16 @@ public class Main {
         System.out.println("\nEnter r1 and r2 circle radius (r1 > r2)");
         r1 = scanner.nextDouble();
         r2 = scanner.nextDouble();
-        if(r1 < r2) {
-            while(r1 < r2) {
+        if (r1 < r2) {
+            while (r1 < r2) {
                 System.out.println("r1 must be > then r2. Enter again");
+                r1 = scanner.nextDouble();
+                r2 = scanner.nextDouble();
+            }
+        }
+        if ((r1 <= 0) || (r2 <= 0)) {
+            while ((r1 <= 0) || (r2 <= 0)) {
+                System.out.println("r1 and r2 must be > 0. Enter again");
                 r1 = scanner.nextDouble();
                 r2 = scanner.nextDouble();
             }
@@ -54,13 +67,10 @@ public class Main {
         /* Task 4
          * decreasing and increasing sequences */
 
-        System.out.println("\nEnter number > 0");
+        System.out.println("\nEnter number");
         num = scanner.nextInt();
-        if (num <= 0 ) {
-            while (num <= 0) {
-                System.out.println("Number must be > 0. Enter again");
-                num = scanner.nextInt();
-            }
+        if (num < 0 ) {
+            num = Math.abs(num);
         }
         sequences(num);
 
@@ -69,6 +79,9 @@ public class Main {
 
         System.out.println("\nEnter number");
         N = scanner.nextInt();
+        if (N < 0) {
+            N = Math.abs(N);
+        }
         average(N);
 
         /* Task 6
@@ -109,6 +122,12 @@ public class Main {
 
         System.out.println("\nEnter the age of dragon");
         dragonAge = scanner.nextInt();
+        if (dragonAge <= 0) {
+            while (dragonAge <= 0) {
+                System.out.println("Age cant be <= 0. Enter again");
+                dragonAge = scanner.nextInt();
+            }
+        }
         dragonHeadEyeCount(dragonAge);
 
         /* Task 10
@@ -157,9 +176,9 @@ public class Main {
     public static void weightTransfer(double dinoWeight) {
 
         double mgrams, grams, tons;
-        mgrams = dinoWeight * 1_000_000;
-        grams = dinoWeight * 1_000;
-        tons = dinoWeight / 1_000;
+        mgrams = dinoWeight * 1_000_000;                // Transfer to miligrams
+        grams = dinoWeight * 1_000;                     // Transfer to grams
+        tons = dinoWeight / 1_000;                      // Transfer to tons
         System.out.println(dinoWeight + " kg = " + mgrams + " milligrams");
         System.out.println(dinoWeight + " kg = " + grams + " grams");
         System.out.println(dinoWeight + " kg = " + tons + " tons");
@@ -181,7 +200,7 @@ public class Main {
     public static void sequences(int num) {
 
         int lastNumeral, prelastNumeral;
-        lastNumeral = num % 10;
+        lastNumeral = num % 10;                              // %10 - get last numeral // /10 - remove last numeral
         num = num / 10;
         prelastNumeral = num % 10;
         if (lastNumeral > prelastNumeral) {
@@ -215,10 +234,10 @@ public class Main {
     public static void sequencesArray(int num) {
 
         int lastNumeral, prelastNumeral;
-        boolean lastIncrease = true, increase = true, cont = true, size;
-        ArrayList<Integer> numeralList = new ArrayList<Integer>();
+        boolean lastIncrease = true, increase = true, cont = true;
+        ArrayList<Integer> numeralList = new ArrayList();
         while (num > 0) {
-            numeralList.add(num % 10);
+            numeralList.add(num % 10);                      // %10 - get last numeral // /10 - remove last numeral
             num = num / 10;
         }
             for (int i = 0; i < numeralList.size() - 1; ++i) {
@@ -263,7 +282,7 @@ public class Main {
         int sum = 0, proizv = 1, size = 0, N2 = N;
         double average, gAverage;
         while (N != 0) {
-            sum += N % 10;
+            sum += N % 10;                              // %10 - get last numeral // /10 - remove last numeral
             proizv *= N % 10;
             ++size;
             N = N / 10;
@@ -283,7 +302,7 @@ public class Main {
         int sum = 0, N2 = N, proizv = 1;
         double average, gAverage;
         while (N > 0) {
-            numeralList.add(N % 10);
+            numeralList.add(N % 10);                    // %10 - get last numeral // /10 - remove last numeral
             N = N / 10;
         }
         for (int i = 0; i < numeralList.size(); ++i) {
@@ -302,8 +321,12 @@ public class Main {
     public static void reverse(int nToReverse) {
 
         String reverse = "";
+        if (nToReverse < 0) {
+            reverse += "-";
+            nToReverse = Math.abs(nToReverse);
+        }
         while (nToReverse != 0) {
-            reverse += nToReverse % 10;
+            reverse += nToReverse % 10;                 // %10 - get last numeral // /10 - remove last numeral
             nToReverse = nToReverse / 10;
         }
         System.out.println(reverse);
@@ -328,7 +351,7 @@ public class Main {
         int reversedNum = 0, degree;
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
         while (nToReverse > 0) {
-            numeralList.add(nToReverse % 10);
+            numeralList.add(nToReverse % 10);               // %10 - get last numeral // /10 - remove last numeral
             nToReverse = nToReverse / 10;
         }
         for (int i = 0; i < numeralList.size(); ++i) {
@@ -378,12 +401,13 @@ public class Main {
     public static void dragonHeadEyeCount(int dragonAge) {
 
         int headCount = 3, eyeCount;
+        int threeHeadAge = 200, twoHeadAge = 300;
         for (int i = 1; i <= dragonAge; ++i) {
-            if (i < 200) {
+            if (i < threeHeadAge) {
                 headCount += 3;
-            } else if ((i >= 200) && (i < 300)) {
+            } else if ((i >= threeHeadAge) && (i < twoHeadAge)) {
                 headCount += 2;
-            } else if (i >= 300) {
+            } else if (i >= twoHeadAge) {
                 headCount += 1;
             }
         }
