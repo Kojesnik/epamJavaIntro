@@ -16,10 +16,10 @@ public class Main {
         double num1, num2;                      // Task 7 variables
         int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
         int dragonAge;                          // Task 9 variables
+        char letter;                            // Task 10 variables
 
         /* Task 1
-         * difference check between a, b and c
-         */
+         * difference check between a, b and c */
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 3 numbers: a, b and c");
@@ -29,16 +29,14 @@ public class Main {
         numCheck(a, b, c);
 
         /* Task 2
-         * kg transfer to milligrams, grams and tons
-         */
+         * kg transfer to milligrams, grams and tons */
 
         System.out.println("\nEnter dinosaur weight");
         weight = scanner.nextDouble();
         weightTransfer(weight);
 
         /* Task 3
-         * ring area
-         */
+         * ring area */
 
         System.out.println("\nEnter r1 and r2 circle radius (r1 > r2)");
         r1 = scanner.nextDouble();
@@ -53,8 +51,7 @@ public class Main {
         ringArea(r1, r2);
 
         /* Task 4
-         * decreasing and increasing sequences
-         */
+         * decreasing and increasing sequences */
 
         System.out.println("\nEnter number > 0");
         num = scanner.nextInt();
@@ -67,24 +64,21 @@ public class Main {
         sequences(num);
 
         /* Task 5
-         * average and geometrical average
-         */
+         * average and geometrical average */
 
         System.out.println("\nEnter number");
         N = scanner.nextInt();
         average(N);
 
         /* Task 6
-         * reverse
-         */
+         * reverse */
 
         System.out.println("\nEnter number to reverse it");
         N2 = scanner.nextInt();
         reverse(N2);
 
         /* Task 7
-         * change variables btw each other
-         */
+         * change variables btw each other */
 
         System.out.println("\nEnter 2 numbers");
         num1 = scanner.nextDouble();
@@ -96,8 +90,7 @@ public class Main {
         System.out.println(num1 + " = a\n" + num2 + " = b");
 
         /* Task 8
-         * triangle check
-         */
+         * triangle check */
 
         System.out.println("\nEnter 3 dots, first: x1,y1");
         x1 = scanner.nextInt();
@@ -111,12 +104,25 @@ public class Main {
         triangleCheck(x1, y1, x2, y2, x3, y3);
 
         /* Task 9
-         * counting head and eye number
-         */
+         * counting head and eye number */
 
         System.out.println("\nEnter the age of dragon");
         dragonAge = scanner.nextInt();
         dragonHeadEyeCount(dragonAge);
+
+        /* Task 10
+         * vowel or not (4 METHODS) */
+
+        System.out.println("\nEnter your letter to understand vowel it or not");
+        letter = scanner.next().charAt(0);
+        letterScan1(letter);
+        letterScan2(letter);
+        letterScan3(letter);
+        letterScan4(letter);
+
+        /* Task 11
+
+         */
 
 
     }
@@ -380,4 +386,95 @@ public class Main {
 
     }
 
-}
+    //Task 10 method (SWITCH METHOD)
+
+    public static void letterScan1(char letter) {
+
+        switch (letter) {
+            case 'a':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'A':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'e':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'E':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'i':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'I':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'o':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'O':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'u':
+                System.out.println("It is a vowel letter");
+                break;
+            case 'U':
+                System.out.println("It is a vowel letter");
+                break;
+            default:
+                System.out.println("It is not a vowel letter");
+                break;
+        }
+
+    }
+
+    //Task 10 method (IF METHOD)
+
+    public static void letterScan2(char letter) {
+
+        if ((letter == 'a') || (letter == 'A') || (letter == 'e') || (letter == 'E')
+                            || (letter == 'i') || (letter == 'I') || (letter == 'o')
+                            || (letter == 'O') || (letter == 'u') || (letter == 'U')) {
+
+            System.out.println("It is a vowel letter");
+        } else {
+            System.out.println("It is not a vowel letter");
+        }
+
+    }
+
+    //Task 10 method (VOWEL ARRAY METHOD)
+
+    public static void letterScan3(char letter) {
+
+        char[] vowelLetters = {'a', 'A', 'e', 'E', 'o', 'O', 'i', 'I', 'u', 'U'};
+        for (int i = 0; i < 10; ++i) {
+            if (letter == vowelLetters[i]) {
+                System.out.println("It is a vowel letter");
+                return;
+            }
+        }
+        System.out.println("It is not a vowel letter");
+
+    }
+
+    //Task 10 method (NOT VOWEL ARRAY METHOD)
+
+    public static void letterScan4(char letter) {
+
+        char[] vowelLetters = {'b', 'B', 'c', 'C', 'd', 'D', 'f', 'F', 'g', 'G', 'h', 'H', 'j', 'J',
+                                'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'p', 'P', 'q', 'Q', 'r', 'R',
+                                's', 'S', 't', 'T', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z'};
+        for (int i = 0; i < 42; ++i) {
+            if (letter == vowelLetters[i]) {
+                System.out.println("It is not a vowel letter");
+                return;
+            }
+        }
+        System.out.println("It is a vowel letter");
+
+    }
+
+
+
+    }
