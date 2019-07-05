@@ -8,16 +8,16 @@ public class Main {
     public static void main(String[] args) {
 
         double a, b, c;                         // Task 1 variables
-        double weight;                          // Task 2 variables
+        double dinoWeight;                      // Task 2 variables
         double r1, r2;                          // Task 3 variables
         int num;                                // Task 4 variables
         int N;                                  // Task 5 variables
-        int N2;                                 // Task 6 variables
+        int nToReverse;                         // Task 6 variables
         double num1, num2;                      // Task 7 variables
         int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
         int dragonAge;                          // Task 9 variables
         char letter;                            // Task 10 variables
-        int month, year, day;                  // Task 11 variables
+        int month, year, day;                   // Task 11 variables
 
         /* Task 1
          * difference check between a, b and c */
@@ -33,8 +33,8 @@ public class Main {
          * kg transfer to milligrams, grams and tons */
 
         System.out.println("\nEnter dinosaur weight");
-        weight = scanner.nextDouble();
-        weightTransfer(weight);
+        dinoWeight = scanner.nextDouble();
+        weightTransfer(dinoWeight);
 
         /* Task 3
          * ring area */
@@ -75,8 +75,8 @@ public class Main {
          * reverse */
 
         System.out.println("\nEnter number to reverse it");
-        N2 = scanner.nextInt();
-        reverse(N2);
+        nToReverse = scanner.nextInt();
+        reverse(nToReverse);
 
         /* Task 7
          * change variables btw each other */
@@ -154,15 +154,15 @@ public class Main {
 
     // Task 2 method
 
-    public static void weightTransfer(double weight) {
+    public static void weightTransfer(double dinoWeight) {
 
-        double mg, g, t;
-        mg = weight * 1_000_000;
-        g = weight * 1_000;
-        t = weight / 1_000;
-        System.out.println(weight + " kg = " + mg + " milligrams");
-        System.out.println(weight + " kg = " + g + " grams");
-        System.out.println(weight + " kg = " + t + " tons");
+        double mgrams, grams, tons;
+        mgrams = dinoWeight * 1_000_000;
+        grams = dinoWeight * 1_000;
+        tons = dinoWeight / 1_000;
+        System.out.println(dinoWeight + " kg = " + mgrams + " milligrams");
+        System.out.println(dinoWeight + " kg = " + grams + " grams");
+        System.out.println(dinoWeight + " kg = " + tons + " tons");
 
     }
 
@@ -180,15 +180,15 @@ public class Main {
 
     public static void sequences(int num) {
 
-        int num1, num2;
-        num1 = num % 10;
+        int lastNumeral, prelastNumeral;
+        lastNumeral = num % 10;
         num = num / 10;
-        num2 = num % 10;
-        if (num1 > num2) {
-            while ((num != 0) && (num1 > num2)) {
-                num1 = num % 10;
+        prelastNumeral = num % 10;
+        if (lastNumeral > prelastNumeral) {
+            while ((num != 0) && (lastNumeral > prelastNumeral)) {
+                lastNumeral = num % 10;
                 num = num / 10;
-                num2 = num % 10;
+                prelastNumeral = num % 10;
             }
             if (num == 0) {
                 System.out.println("It is an increasing sequence");
@@ -196,10 +196,10 @@ public class Main {
                 System.out.println("It is not a sequence");
             }
         } else {
-            while ((num != 0) && (num2 > num1)) {
-                num1 = num % 10;
+            while ((num != 0) && (prelastNumeral > lastNumeral)) {
+                lastNumeral = num % 10;
                 num = num / 10;
-                num2 = num % 10;
+                prelastNumeral = num % 10;
             }
             if (num == 0) {
                 System.out.println("It is a decreasing sequence");
@@ -214,7 +214,7 @@ public class Main {
 
     public static void sequencesArray(int num) {
 
-        int num1, num2;
+        int lastNumeral, prelastNumeral;
         boolean lastIncrease = true, increase = true, cont = true, size;
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
         while (num > 0) {
@@ -225,9 +225,9 @@ public class Main {
                 if (i > 0){
                     lastIncrease = increase;
                 }
-                num1 = numeralList.get(i);
-                num2 = numeralList.get(i + 1);
-                if (num1 > num2) {
+                lastNumeral = numeralList.get(i);
+                prelastNumeral = numeralList.get(i + 1);
+                if (lastNumeral > prelastNumeral) {
                     increase = true;
                 } else {
                     increase = false;
@@ -260,16 +260,16 @@ public class Main {
 
     public static void average(int N) {
 
-        int sum = 0, pro = 1, size = 0, N2 = N;
+        int sum = 0, proizv = 1, size = 0, N2 = N;
         double average, gAverage;
         while (N != 0) {
             sum += N % 10;
-            pro *= N % 10;
+            proizv *= N % 10;
             ++size;
             N = N / 10;
         }
         average = (double)sum / size;
-        gAverage = Math.pow(pro, 1/(double)size);
+        gAverage = Math.pow(proizv, 1/(double)size);
         System.out.println("Average of " + N2 + " = " + average);
         System.out.println("Geometrical average of " + N2 + " = " + gAverage);
 
@@ -280,7 +280,7 @@ public class Main {
     public static void averageArray(int N) {
 
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
-        int sum = 0, N2 = N, pro = 1;
+        int sum = 0, N2 = N, proizv = 1;
         double average, gAverage;
         while (N > 0) {
             numeralList.add(N % 10);
@@ -288,10 +288,10 @@ public class Main {
         }
         for (int i = 0; i < numeralList.size(); ++i) {
             sum = sum + numeralList.get(i);
-            pro = pro * numeralList.get(i);
+            proizv = proizv * numeralList.get(i);
         }
         average = (double)sum / numeralList.size();
-        gAverage = Math.pow(pro, 1 / (double)numeralList.size());
+        gAverage = Math.pow(proizv, 1 / (double)numeralList.size());
         System.out.println("Average of " + N2 + " = " + average);
         System.out.println("Geometrical average of " + N2 + " = " + gAverage);
 
@@ -299,12 +299,12 @@ public class Main {
 
     // Task 6 method (WITHOUT ARRAYLIST WITHOUT STRINGBUFFER) FOR ALL NUMBERS
 
-    public static void reverse(int N2) {
+    public static void reverse(int nToReverse) {
 
         String reverse = "";
-        while (N2 != 0) {
-            reverse += N2 % 10;
-            N2 = N2 / 10;
+        while (nToReverse != 0) {
+            reverse += nToReverse % 10;
+            nToReverse = nToReverse / 10;
         }
         System.out.println(reverse);
 
@@ -312,24 +312,24 @@ public class Main {
 
     // Task 6 method (WITHOUT ARRAYLIST USING STRINGBUFFER) FOR ALL NUMBERS
 
-    public static void reverseSB(int N2) {
+    public static void reverseSB(int nToReverse) {
 
-        String string = Integer.toString(N2);
+        String string = Integer.toString(nToReverse);
         string = new StringBuffer(string).reverse().toString();
-        N2 = Integer.parseInt(string);
-        System.out.println(N2);
+        nToReverse = Integer.parseInt(string);
+        System.out.println(nToReverse);
 
     }
 
     // Task 6 method (USING ARRAYLIST) FOR ALL NUMBERS
 
-    public static void reverseArray(int N2) {
+    public static void reverseArray(int nToReverse) {
 
         int reversedNum = 0, degree;
         ArrayList<Integer> numeralList = new ArrayList<Integer>();
-        while (N2 > 0) {
-            numeralList.add(N2 % 10);
-            N2 = N2 / 10;
+        while (nToReverse > 0) {
+            numeralList.add(nToReverse % 10);
+            nToReverse = nToReverse / 10;
         }
         for (int i = 0; i < numeralList.size(); ++i) {
             degree = numeralList.size() - (i + 1);
@@ -342,27 +342,27 @@ public class Main {
 
     public static void triangleCheck(int x1, int y1, int x2, int y2, int x3, int y3) {
 
-        double AB, AC, BC;
-        AB = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
-        BC = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
-        AC = Math.sqrt(Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
-        System.out.println(AC);
-        if ( (AB < (BC + AC)) && (BC < (AB + AC)) && (AC < (AB + BC)) ) {
+        double firstSide, secSide, thirdSide;
+        firstSide = Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        secSide = Math.sqrt(Math.pow(x2 - x3, 2) + Math.pow(y2 - y3, 2));
+        thirdSide = Math.sqrt(Math.pow(x1 - x3, 2) + Math.pow(y1 - y3, 2));
+        System.out.println(thirdSide);
+        if ( (firstSide < (secSide + thirdSide)) && (secSide < (firstSide + thirdSide)) && (thirdSide < (firstSide + secSide)) ) {
             System.out.println("It is a triangle");
-            if ((AB > BC) && (AB > AC)) {
-                if ((int)Math.pow(AB, 2) == (Math.pow(BC, 2) + Math.pow(AC, 2))) {
+            if ((firstSide > secSide) && (firstSide > thirdSide)) {
+                if ((int)Math.pow(firstSide, 2) == (Math.pow(secSide, 2) + Math.pow(thirdSide, 2))) {
                     System.out.println("And it is rectangular");
                 } else {
                     System.out.println("And it is not rectangular");
                 }
-            } else if ((BC > AB) && (BC > AC)) {
-                if ((int)Math.pow(BC, 2) == (Math.pow(AB, 2) + Math.pow(AC, 2))) {
+            } else if ((secSide > firstSide) && (secSide > thirdSide)) {
+                if ((int)Math.pow(secSide, 2) == (Math.pow(firstSide, 2) + Math.pow(thirdSide, 2))) {
                     System.out.println("And it is rectangular");
                 } else {
                     System.out.println("And it is not rectangular");
                 }
-            } else if ((AC > BC) && (AC > AB)) {
-                if ((int)Math.pow(AC, 2) == (Math.pow(BC, 2) + Math.pow(AB, 2))) {
+            } else if ((thirdSide > secSide) && (thirdSide > firstSide)) {
+                if ((int)Math.pow(thirdSide, 2) == (Math.pow(secSide, 2) + Math.pow(firstSide, 2))) {
                     System.out.println("And it is rectangular");
                 } else {
                     System.out.println("And it is not rectangular");
