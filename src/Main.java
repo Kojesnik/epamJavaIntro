@@ -14,7 +14,7 @@ public class Main {
         int N;                                  // Task 5 variables
         int nToReverse;                         // Task 6 variables
         double num1, num2;                      // Task 7 variables
-        int x1, y1, x2, y2, x3, y3;                  // Task 8 variables
+        int x1, y1, x2, y2, x3, y3;             // Task 8 variables
         int dragonAge;                          // Task 9 variables
         char letter;                            // Task 10 variables
         int month, year, day;                   // Task 11 variables
