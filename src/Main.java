@@ -15,6 +15,7 @@ public class Main {
         int N2;                                 // Task 6 variables
         double num1, num2;                      // Task 7 variables
         int x1,y1,x2,y2,x3,y3;                  // Task 8 variables
+        int dragonAge;                          // Task 9 variables
 
         /* Task 1
          * difference check between a, b and c
@@ -108,6 +109,15 @@ public class Main {
         x3 = scanner.nextInt();
         y3 = scanner.nextInt();
         triangleCheck(x1, y1, x2, y2, x3, y3);
+
+        /* Task 9
+         * counting head and eye number
+         */
+
+        System.out.println("\nEnter the age of dragon");
+        dragonAge = scanner.nextInt();
+        dragonHeadEyeCount(dragonAge);
+
 
     }
 
@@ -348,6 +358,26 @@ public class Main {
         } else {
             System.out.println("It is not a triangle");
         }
+    }
+
+    //Task 9 method
+
+    public static void dragonHeadEyeCount(int dragonAge) {
+
+        int headCount = 3, eyeCount;
+        for (int i = 1; i <= dragonAge; ++i) {
+            if (i < 200) {
+                headCount += 3;
+            } else if ((i >= 200) && (i < 300)) {
+                headCount += 2;
+            } else if (i >= 300) {
+                headCount += 1;
+            }
+        }
+        eyeCount = headCount * 2;
+        System.out.println("Head number in " + dragonAge + " years - " + headCount);
+        System.out.println("Eye number in " + dragonAge + " years - " + eyeCount);
+
     }
 
 }
